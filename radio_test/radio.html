@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="radio.js"></script> -->
+    <script>
+        function my_click() {
+            alert(document.querySelector('input[name="developer-type"]:checked').value);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="radio" value="front-end" name="developer-type" id="front" checked>Front-end
+    <input type="radio" value="back-end" name="developer-type" id="back">Back-end
+    <input type="radio" value="full-stack" name="developer-type" id="full">Full-stack
+    <button onclick="my_click()">click me</button>
+</body>
+
+</html>

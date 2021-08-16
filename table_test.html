@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* table,
+      td {
+        border: 1px solid #333;
+      }
+
+      th {
+        background-color: #333;
+        color: #fff;
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- <table>
+        <tr>
+          <th rowspan="2"><a href="#" id="tx" onclick="selectid(x)">第 x 筆</th>
+          <td id="z1_value_1_x">z1[x].value_1</td>
+        </tr>
+        <tr>
+          <td id="z1_value_2_x">z1[x].value_2</td>
+        </tr>
+    </table> -->
+    <table border="1px solid #333">
+      <tr>
+        <th>使用者</th>
+        <th><a href="#" id="gender" onclick="SelectGender(x)">性別</a></th>
+        <th><a href="#" id="age" onclick="SelectAge(x)">年齡</a></th>
+        <th>
+          <a href="#" id="marriage" onclick="SelectMarriage(x)">婚姻狀況</a>
+        </th>
+        <th>
+          <a href="#" id="children" onclick="SelectChildren(x)">有無小孩</a>
+        </th>
+        <th>
+          <a href="#" id="education" onclick="SelectEducation(x)">教育程度</a>
+        </th>
+        <th><a href="#" id="jobtitle" onclick="SelectJobtitle(x)">職稱</a></th>
+        <th><a href="#" id="salary" onclick="SelectSalary(x)">薪資</a></th>
+        <th>
+          <a href="#" id="department" onclick="SelectDepartment(x)">部門</a>
+        </th>
+      </tr>
+      <tr>
+        <th rowspan="2" style="background-color: #333; color: #fff">第 x 筆</th>
+        <td>z1[x].value_1</td>
+      </tr>
+      <tr>
+        <td>z1[x].value_2</td>
+      </tr>
+    </table>
+  </body>
+</html>

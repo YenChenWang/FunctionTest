@@ -1,0 +1,43 @@
+<!-- 寫好語法 https://codepen.io/yenchenwang/pen/bGWBBNR?editors=0001 -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    <title>Document</title>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                    method: "GET",
+                    url: "https://randomuser.me/api/",
+                    // 針對 post or put 時使用的
+                    // data: { name: "John", location: "Boston" }
+                })
+                .done(function (msg) {
+                    console.log('全部', msg);
+                    console.log('email :', msg.results[0].email);
+                    var email = msg.results[0].email;
+                    $('div').append(email);
+                });
+        });
+
+
+        // $.ajax({
+        //   url: 'https://randomuser.me/api/',
+        //   dataType: 'json',
+        //   success: function(data) {
+        //     console.log(data);
+        //   }
+        // });
+    </script>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

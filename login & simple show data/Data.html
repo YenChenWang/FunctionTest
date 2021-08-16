@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase_web_data</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
+    <script src="js/data.js"></script>
+  </head>
+  <body>
+    <form id="form1" name="form1" method="post">
+      <p>
+        <label for="textfield">名稱 : </label>
+        <input type="text" name="textfield" id="textfield" />
+      </p>
+      <p>
+        <label for="textfield2">資料 : </label>
+        <input type="text" name="textfield2" id="textfield2" />
+      </p>
+      <p>
+        <input
+          type="button"
+          name="button"
+          id="button"
+          value="新增"
+          onclick="writedata()"
+        />
+        <input
+          type="button"
+          name="button2"
+          id="button2"
+          value="修改"
+          onclick="updata()"
+        />
+        <input
+          type="button"
+          name="button3"
+          id="button3"
+          value="刪除"
+          onclick="deldata()"
+        />
+      </p>
+    </form>
+
+    <p>讀取如下 :</p>
+    <div id="read">Firebase 顯示的資料內容放在這裡</div>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase_web_data</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBhMq2YQnsdDfPMHsEUO2n-42xQLR1MsXM",
+    authDomain: "fir-web-d11ce.firebaseapp.com",
+    projectId: "fir-web-d11ce",
+    storageBucket: "fir-web-d11ce.appspot.com",
+    messagingSenderId: "910674546570",
+    appId: "1:910674546570:web:ba26a451f64a42ba4e4273",
+    measurementId: "G-XMBN5MKQWP"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  var text_id = 0;      // 為了存最後一筆得資料
+  var select_id;        // 為了存選擇哪一個編號
+  
+  // 新增語法
+  function writedata(){
+    var t1 = document.getElementById("textfield").value;
+    var t2 = document.getElementById("textfield2").value;
+    database.ref('/'+(text_id+1)).set({
+        value_1:t1,
+        value_2:t2
+    });
+    selectdata();
+  }
+
+  function selectdata(){
+    database.ref('/').once("value",function(data){
+        var z1 = data.val();
+        var html_text = "";
+        for(x in z1){
+            html_text = html_text + "<a href=\"#\" id=\"t" + x + "\" onClick=\"selectid(" + x + ")\">第" + x + "筆</a><ol><li id=\"z1_value_1_" + x + "\">" + z1[x].value_1 + "</li><li id=\"z1_value_2_" + x + "\">" + z1[x].value_2 + "</li></ol><br\>";
+            text_id = parseInt(x);
+        }
+        document.getElementById("read").innerHTML = html_text;
+    });
+  }
+
+  // 選擇語法
+  function selectid(x){
+    document.getElementById("textfield").value = document.getElementById("z1_value_1_" + x).innerHTML;
+    document.getElementById("textfield2").value = document.getElementById("z1_value_2_" +x).innerHTML;
+    select_id = x;
+  }
+
+  // 修改語法
+  function updata(){
+    var t1 = document.getElementById("textfield").value;
+    var t2 = document.getElementById("textfield2").value;
+    database.ref('/' + select_id).set({
+        value_1:t1,
+        value_2:t2
+    });
+    selectdata();
+  }
+
+  // 刪除語法
+  function deldata(){
+    database.ref('/' + select_id).remove();
+    alert("已刪除");
+    selectdata();
+  }
+  selectdata();
+  
+</script>
+
+</head>
+<body>
+    <form id="form1" name="form1" method="post">
+        <p>
+            <label for="textfield">名稱 : </label>
+            <input type="text" name="textfield" id="textfield">
+        </p>
+        <p>
+            <label for="textfield2">資料 : </label>
+            <input type="text" name="textfield2" id="textfield2">
+        </p>
+        <p>
+            <input type="button" name="button" id="button" value="新增" onclick="writedata()">
+            <input type="button" name="button2" id="button2" value="修改" onclick="updata()">
+            <input type="button" name="button3" id="button3" value="刪除" onclick="deldata()">
+        </p>
+    </form>
+
+    <p>讀取如下 : </p>
+    <div id="read">Firebase 顯示的資料內容放在這裡</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>get select value</title>
+  </head>
+
+  <script>
+    function print_value() {
+      //將 select 的值在印出
+      document.getElementById("result").innerHTML =
+        document.getElementById("number").value;
+    }
+  </script>
+
+  <body>
+    <select name="number" id="number" onchange="print_value();">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+    <!-- 印出結果 -->
+    <div id="result"></div>
+  </body>
+</html>
